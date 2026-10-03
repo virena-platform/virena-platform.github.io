@@ -84,6 +84,11 @@ input[type=email]:focus{border-color:#ffffff}
 
 .cite{font-size:16px;color:var(--muted)}
 
+/* embedded sign-up form */
+.signup-frame{margin:24px 0 18px;max-width:560px}
+.signup-frame iframe{display:block;width:100%;height:680px;border:0;border-radius:20px}
+@media(max-width:560px){.signup-frame iframe{height:820px}}
+
 /* team */
 .team{display:flex;flex-wrap:wrap;gap:20px;margin-top:26px}
 .person{flex:1 1 200px;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:24px;border:1px solid var(--line);border-radius:20px;background:var(--navy-2)}
@@ -204,14 +209,11 @@ footer p{margin-bottom:8px}
   <section id="updates">
     <div class="wrap">
       <h2>Stay updated</h2>
-      <p>VIRENA is currently available through research collaborations, and general release is expected at the end of 2026. Leave your email address and we will write to you when it opens. To use it now, email <a href="mailto:hoes@ipz.uzh.ch?subject=VIRENA%20collaboration">hoes@ipz.uzh.ch</a> about a collaboration.</p>
-      <form id="signup" method="post" action="#">
-        <label for="email">Email address</label>
-        <input id="email" name="email" type="email" autocomplete="email" required placeholder="name@university.edu">
-        <button class="btn" type="submit">Notify me</button>
-      </form>
-      <div id="signup-msg" role="status" aria-live="polite"></div>
-      <p class="note">We use your address only to tell you about VIRENA and will not share it. You can ask to be removed at any time. Prefer to write directly? Email <a href="mailto:hoes@ipz.uzh.ch?subject=VIRENA%20mailing%20list">hoes@ipz.uzh.ch</a>.</p>
+      <p>VIRENA is currently available through research collaborations, and general release is expected at the end of 2026. Sign up below and we will write to you when it opens. To use it now, email <a href="mailto:hoes@ipz.uzh.ch?subject=VIRENA%20collaboration">hoes@ipz.uzh.ch</a> about a collaboration.</p>
+      <div class="signup-frame">
+        <iframe title="Mailing list sign-up form" src="https://8ce6a14d.sibforms.com/v2/serve/MUIFALtlKyhZ3CgdcQZML65m3bbOFuWoqmypLa_REJvdVTENPzOcqe29FaxBRSunLzDYJexM2IhYrn7SjuE8JhDR2CYA_pzoAglR8aTMocBnRXjdL1BlI7DTxhDu6e8elgT--kaaKMu68SA2ZoE32P2O5AKT7dB1xBUsV49trXA6jNrOEiHeLTtSZ7e_7FN3zz06YH-feyjwatcd2A==" frameborder="0" scrolling="auto" allowfullscreen></iframe>
+      </div>
+      <p class="note">We use your address only to tell you about VIRENA and will not share it. We use Brevo to store addresses and send emails. You can unsubscribe at any time with the link in every email, or ask us to delete your address. If the form does not load, email <a href="mailto:hoes@ipz.uzh.ch?subject=VIRENA%20mailing%20list">hoes@ipz.uzh.ch</a>.</p>
     </div>
   </section>
 
@@ -233,34 +235,7 @@ footer p{margin-bottom:8px}
   </div>
 </footer>
 
-<script>
-/*
-  Mailing list.
-  Until a mailing-list service is connected, the form opens a prepared email
-  to the address below. To connect a service later, paste its form URL into
-  ACTION. The field name in the form (name="email") may need to match what
-  the service expects.
-*/
-(function(){
-  var ACTION = "";                 // e.g. "https://your-mailing-service.example/subscribe"
-  var TO = "hoes@ipz.uzh.ch";
-  var form = document.getElementById('signup');
-  var msg = document.getElementById('signup-msg');
-  if (!form) return;
 
-  if (ACTION) { form.setAttribute('action', ACTION); return; }
-
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var email = form.elements.email.value.trim();
-    if (!email) return;
-    var subject = encodeURIComponent('VIRENA mailing list');
-    var body = encodeURIComponent('Please add me to the VIRENA mailing list: ' + email);
-    window.location.href = 'mailto:' + TO + '?subject=' + subject + '&body=' + body;
-    msg.textContent = 'Your email program should open with a prepared message. Please send it to join the list.';
-  });
-})();
-</script>
 
 </body>
 </html>
